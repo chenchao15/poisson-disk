@@ -24,7 +24,7 @@ def generate_random_point(o, r):
 	r0 = random.random()
 	r1 = random.random()
 	
-	dist = r + (r0 * (2*r - r))
+	dist = r + (r0 * (2 * r - r))
 	angle = 2 * math.pi * r1
 	
 	return (o[0] + dist * math.cos(angle), o[1] + dist * math.sin(angle))
@@ -58,7 +58,7 @@ def generate_points(minimum_dist):
 			pn = generate_random_point(random_p, minimum_dist)
 			
 			fits = is_in_circle(pn)
-			if (fits):
+			if fits:
 				# TODO: Optimize.  Maintain a grid of existing samples, and only check viable nearest neighbors.
 				for point in samples:
 					if distance(point, pn) < minimum_dist:
@@ -73,7 +73,8 @@ def generate_points(minimum_dist):
 		
 		if not found:
 			active_list.remove(random_p)
-		
+	
+	# Print the samples in a form that can be copy-pasted into other code.
 	print("There are %d samples:" % len(samples))
 	for point in samples:
 		print("\t{\t%08f,\t%08f\t}," % (point[0], point[1]))
